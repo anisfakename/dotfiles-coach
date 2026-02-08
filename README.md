@@ -239,6 +239,12 @@ npm run typecheck     # Type-check without emitting
 
 ---
 
+## Disclaimer
+
+This project was built with significant assistance from AI tools, including GitHub Copilot and Cursor AI. The code, tests, documentation, and images were generated and refined through AI-assisted development. All output has been reviewed and tested by a human.
+
+---
+
 ## License
 
 MIT

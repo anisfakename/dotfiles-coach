@@ -13,9 +13,19 @@ Dotfiles Coach analyses your shell history (Bash, Zsh, PowerShell), finds repeat
 ## Quick Start
 
 ```bash
-# Install globally
-npm install -g dotfiles-coach
+# Clone and install
+git clone https://github.com/OlaProeis/dotfiles-coach.git
+cd dotfiles-coach
+npm install
+npm run build
 
+# (Optional) Link for global "dotfiles-coach" command
+npm link
+```
+
+Once built, run commands with `dotfiles-coach` (if linked) or `node dist/cli.js`:
+
+```bash
 # 1. Analyse your shell history (100% local, no network)
 dotfiles-coach analyze
 

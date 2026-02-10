@@ -1,6 +1,7 @@
 {
   "name": "dotfiles-coach",
   "version": "1.0.0",
+  "type": "module",
   "description": "CLI that analyzes shell history and uses GitHub Copilot CLI to suggest automation improvements",
   "main": "dist/cli.js",
   "bin": {
@@ -8,7 +9,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "dev": "ts-node src/cli.ts",
+    "dev": "node --loader ts-node/esm src/cli.ts",
     "start": "node dist/cli.js",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -36,12 +37,15 @@
     "execa": "^9.5.2",
     "fast-levenshtein": "^3.0.0",
     "fs-extra": "^11.2.0",
-    "ora": "^8.1.1"
+    "ink": "^5.1.0",
+    "ora": "^8.1.1",
+    "react": "^18.3.1"
   },
   "devDependencies": {
     "@types/fast-levenshtein": "^0.0.4",
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^22.10.1",
+    "@types/react": "^18.3.18",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.2",
     "vitest": "^2.1.6"

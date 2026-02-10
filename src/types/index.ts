@@ -78,6 +78,7 @@ export interface ApplyOptions {
   appendTo?: string;
   dryRun?: boolean;
   backup?: boolean;
+  interactive?: boolean;
 }
 
 /** Options for report command. */

@@ -64,8 +64,22 @@ export async function runApply(options: ApplyOptions): Promise<void> {
     process.exit(1);
   }
 
-  const { shell, suggestions, generatedAt } = cache;
+  let { shell, suggestions, generatedAt } = cache;
   const outputPath = options.output ?? getDefaultOutputPath(shell);
+
+  // 1b ── Interactive mode: let user pick which suggestions to apply ──────
+  if (options.interactive) {
+    const { renderInteractiveTUI } = await import('../tui/index.js');
+    const result = await renderInteractiveTUI(suggestions, shell);
+
+    if (result.selected.length === 0) {
+      console.log(chalk.yellow('\nNo suggestions selected. Exiting.'));
+      return;
+    }
+
+    suggestions = result.selected;
+    generatedAt = new Date().toISOString();
+  }
 
   // 2 ── Format suggestions as shell code ──────────────────────────────────
   const formattedCode = formatSuggestionsAsCode(

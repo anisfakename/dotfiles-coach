@@ -110,18 +110,24 @@ program
   )
   .option('--dry-run', 'Show what would be written without modifying files')
   .option('--no-backup', 'Skip backup creation')
+  .option(
+    '--interactive',
+    'Review and select suggestions interactively before applying',
+  )
   .action(
     async (opts: {
       output?: string;
       appendTo?: string;
       dryRun?: boolean;
       backup?: boolean;
+      interactive?: boolean;
     }) => {
       await runApply({
         output: opts.output,
         appendTo: opts.appendTo,
         dryRun: opts.dryRun ?? false,
         backup: opts.backup ?? true,
+        interactive: opts.interactive ?? false,
       });
     },
   );

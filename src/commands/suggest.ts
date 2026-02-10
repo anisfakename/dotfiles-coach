@@ -179,6 +179,39 @@ export async function runSuggest(
     );
     console.log('');
 
+    // If --interactive, launch TUI for review and selection
+    if (options.interactive) {
+      const { renderInteractiveTUI } = await import('../tui/index.js');
+      const result = await renderInteractiveTUI(suggestions, shell);
+
+      if (result.selected.length > 0) {
+        // Update cache with only the selected (and potentially edited) suggestions
+        const selectedCache: SuggestionsCache = {
+          shell,
+          generatedAt: new Date().toISOString(),
+          suggestions: result.selected,
+        };
+        await writeJsonFile(getSuggestionsCachePath(), selectedCache);
+
+        console.log('');
+        console.log(
+          chalk.green(
+            `${result.selected.length} suggestion(s) selected and cached.`,
+          ),
+        );
+        console.log(
+          chalk.cyan(
+            "Run 'dotfiles-coach apply' to write them to your shell config.",
+          ),
+        );
+      } else {
+        console.log('');
+        console.log(chalk.yellow('No suggestions selected.'));
+      }
+
+      return result.selected;
+    }
+
     // If --output flag, write to file and exit early
     if (options.output) {
       const formatted = formatSuggestionsPlainText(suggestions);

